@@ -1,0 +1,31 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 700px;
+    margin: 2rem auto 0 auto;
+}
+
+form {
+    width: 100%;   
+}
+
+form input {
+    padding: 0.6rem;
+    font-size: larger;
+    width: 80%;
+}
+
+form button {
+    padding: 0.6rem;
+    font-size: larger;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+li {
+    margin-bottom: 0.6rem;
+}
+
+.prop {
+    font-weight: bold;
+}

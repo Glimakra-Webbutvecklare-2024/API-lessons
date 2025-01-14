@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <style>
+        #result {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista av Pokemon</h1>
+    <div id="result"></div>
+
+
+    <script>
+        // Vi ska använda fetch för att hämta en lista av pokemon
+        // ändpunkten är https://pokeapi.co/api/v2/pokemon
+        const endpoint = "https://pokeapi.co/api/v2/pokemon";
+
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(data => renderData(data))
+            .catch(error => console.log("Something went wrong", error))
+
+        function renderData(data) {
+            console.log(data);
+            const pokemons = data.results;
+            const divEl = document.getElementById("result");
+
+            // Loopa igenom varje pokemon
+            for (const pok of pokemons) {
+                
+                // get id
+                const pokeId = pok.url.split("/")[6];
+                // skapa bildurl
+                const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeId}.png`
+                // skapa img element med src till bild
+                divEl.innerHTML += `<div>
+                                        <img src=${imgSrc} alt=${pok.name} />
+                                        <p>${pok.name}</p>
+                                    </div>`;
+
+            }
+        }
+
+    </script>
+</body>
+</html>
